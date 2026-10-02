@@ -1,13 +1,17 @@
 <?php
 
-    $host = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "sids";
-    $dns = "mysql:host=$host;dbname=$dbname";
+    // koneksi db
+    include_once "db.php";
+
+    function semuaSiswa($db) {
+        $stmt = $db->query("SELECT * FROM tabel_siswa");
+        return $stmt->fetchAll();
+    }
+
+    function hapusSiswa($db, $id) {
+        $stmt = $db->prepare("DELETE FROM tabel_siswa WHERE id = ?");
+        $stmt->execute([$id]);
+        return $stmt->rowCount();
+    }
     
-    // koneksi
-    $db = new PDO($dns, $username, $password);
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 ?>
