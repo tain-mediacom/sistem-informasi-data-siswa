@@ -1,7 +1,7 @@
 <?php
 
     // koneksi db
-    include_once "db.php";
+    require "lib/db.php";
 
     function semuaSiswa($db) {
         $stmt = $db->query("SELECT * FROM tabel_siswa");

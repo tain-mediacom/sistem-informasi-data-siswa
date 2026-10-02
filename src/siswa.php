@@ -1,6 +1,6 @@
 <?php
 
-    require_once "fn/functions.php";
+    require_once "functions/functionSiswa.php";
     $title = "Siswa";
 
     $dataSiswa = semuaSiswa($db);

@@ -1,5 +1,4 @@
 <?php
-    require_once "fn/functions.php";
     $title = "Dashboard";
 ?>
 
