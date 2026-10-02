@@ -1,6 +1,7 @@
 <?php
 
     require_once "fn/functions.php";
+    $title = "Siswa";
 
     $dataSiswa = semuaSiswa($db);
 
@@ -24,7 +25,7 @@
 
         <!-- main content -->
         <div class="content px-6 py-2">
-            <h1 class="text-xl font-semibold">Data Siswa</h1>
+            <h1 class="text-xl font-semibold"><?php echo $title; ?></h1>
 
             <a href="" class="px-6 py-2 bg-cyan-600 mt-4 inline-block text-slate-50 font-semibold rounded-md border border-cyan-300 shadow-md shadow-cyan-200 hover:bg-cyan-800 hover:shadow-none">Tambah Siswa Baru</a>
 
