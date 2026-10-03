@@ -8,10 +8,21 @@
         return $stmt->fetchAll();
     }
 
+    function jurusanById($db, $id) {
+        $stmt = $db->prepare("SELECT * FROM tabel_jurusan WHERE id = ?");
+        $stmt->execute([$id]);
+        return $stmt->fetch();
+    }
+
     function tambahJurusan($db, $jurusan) {
-        $newJurusan = $jurusan;
         $stmt = $db->prepare("INSERT INTO tabel_jurusan (jurusan) VALUES (?)");
-        $stmt->execute([$newJurusan]);
+        $stmt->execute([$jurusan]);
+        return $stmt->rowCount();
+    }
+
+    function editJurusan($db, $id, $jurusan) {
+        $stmt = $db->prepare("UPDATE tabel_jurusan SET jurusan = ? WHERE id = ?");
+        $stmt->execute([$jurusan, $id]);
         return $stmt->rowCount();
     }
 

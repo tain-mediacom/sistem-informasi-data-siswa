@@ -47,9 +47,9 @@
                     <?php $x=1; foreach($dataSiswa as $siswa) : ?>
                     <tr>
                         <td class="border border-cyan-200 text-slate-700 py-1 px-3"><?php echo $x++; ?></td>
-                        <td class="border border-cyan-200 text-slate-700 py-1 px-6"><?php echo $siswa["nama"]; ?></td>
-                        <td class="border border-cyan-200 text-slate-700 py-1 px-6"><?php echo $siswa["nisn"]; ?></td>
-                        <td class="border border-cyan-200 text-slate-700 py-1 px-6"><?php echo $siswa["jurusan_id"]; ?></td>
+                        <td class="border border-cyan-200 text-slate-700 py-1 px-6"><?php echo htmlspecialchars($siswa["nama"]); ?></td>
+                        <td class="border border-cyan-200 text-slate-700 py-1 px-6"><?php echo htmlspecialchars($siswa["nisn"]); ?></td>
+                        <td class="border border-cyan-200 text-slate-700 py-1 px-6"><?php echo htmlspecialchars($siswa["jurusan_id"]); ?></td>
                         <td class="border flex items-center gap-2 border-cyan-200 text-slate-700 py-1 px-6">
                             <form action="" method="post" onclick="return confirm('Yakin hapus data siswa !')">
                                 <input type="hidden" name="id" value="<?php echo $siswa["id"]; ?>">

@@ -1,9 +1,9 @@
 <?php
 
     require_once "functions/functionJurusan.php";
-    $title = "Jurusan";
+    $title = "Edit Jurusan";
     $dataJurusan = semuaJurusan($db);
-
+    
      if (isset($_POST["hapus"])) {
         $id = $_POST["id"];
         $hapus = hapusJurusan($db, $id);
@@ -44,13 +44,13 @@
                     <?php $x=1; foreach($dataJurusan as $jurusan) : ?>
                     <tr>
                         <td class="border border-cyan-200 text-slate-700 py-1 px-3"><?php echo $x++; ?></td>
-                        <td class="border border-cyan-200 text-slate-700 py-1 px-6"><?php echo $jurusan["jurusan"]; ?></td>
+                        <td class="border border-cyan-200 text-slate-700 py-1 px-6"><?php echo htmlspecialchars($jurusan["jurusan"]); ?></td>
                         <td class="border flex items-center gap-2 border-cyan-200 text-slate-700 py-1 px-6">
                             <form action="" method="post" onclick="return confirm('Yakin hapus jurusan !')">
                                 <input type="hidden" name="id" value="<?php echo $jurusan["id"]; ?>">
                                 <button type="submit" name="hapus" class="bg-red text-white py-0.5 px-2 rounded-md border border-red-300 bg-red-700">Hapus</button>
                             </form>
-                            <a href="" class="bg-blue-700 py-0.5 px-4 rounded-md border border-cyan-300 block text-white">Edit</a>
+                            <a href="editJurusan.php?id=<?= $jurusan["id"]; ?>" class="bg-blue-700 py-0.5 px-4 rounded-md border border-cyan-300 block text-white">Edit</a>
                         </td>
                     </tr>
                     <?php endforeach; ?>
