@@ -9,10 +9,14 @@
         $id = $_POST["id"];
         $hapus = hapusSiswa($db, $id);
         if ($hapus > 0) {
-            echo "<script>alert('Data Siswa dihapus !')</script>";
-            header("location: siswa.php");
+            echo "
+            <script>
+            alert('Data Siswa dihapus !');
+            window.location.href = 'siswa.php';
+            </script>";
+            exit();
         }
-        exit();
+        
     }
 
 ?>
