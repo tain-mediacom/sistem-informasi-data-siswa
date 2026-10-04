@@ -4,6 +4,21 @@
     $title = "Status";
 
     $dataStatus = semuaStatus($db);
+
+    if (isset($_POST["hapus"])) {
+        $id = $_POST["id"];
+        $hapus = hapusStatus($db, $id);
+        if ($hapus > 0) {
+            echo "
+            <script>
+            alert('Status dihapus !');
+            window.location.href = 'status.php';
+            </script>";
+            exit();
+        }
+    }
+
+
 ?>
 
 
@@ -16,6 +31,8 @@
         <!-- main content -->
         <div class="content px-6 py-2">
             <h1 class="text-xl font-semibold"><?php echo $title; ?></h1>
+            
+            <a href="tambahStatus.php" class="px-6 py-2 bg-cyan-600 mt-4 inline-block text-slate-50 font-semibold rounded-md border border-cyan-300 shadow-md shadow-cyan-200 hover:bg-cyan-800 hover:shadow-none">Tambah Status Baru</a>
 
             <table class="mt-4">
                 <thead>
@@ -31,11 +48,11 @@
                         <td class="border border-cyan-200 text-slate-700 py-1 px-3"><?php echo $x++; ?></td>
                         <td class="border border-cyan-200 text-slate-700 py-1 px-6"><?php echo htmlspecialchars($status["status"]); ?></td>
                         <td class="border flex items-center gap-2 border-cyan-200 text-slate-700 py-1 px-6">
-                            <form action="" method="post" onclick="return confirm('Yakin hapus data siswa !')">
-                                <input type="hidden" name="id" value="<?php echo $siswa["id"]; ?>">
+                            <form action="" method="post" onclick="return confirm('Yakin hapus status !')">
+                                <input type="hidden" name="id" value="<?php echo $status["id"]; ?>">
                                 <button type="submit" name="hapus" class="bg-red text-white py-0.5 px-2 rounded-md border border-red-300 bg-red-700">Hapus</button>
                             </form>
-                            <a href="" class="bg-blue-700 py-0.5 px-4 rounded-md border border-cyan-300 block text-white">Edit</a>
+                            <a href="editStatus.php?id=<?php echo $status["id"]; ?>" class="bg-blue-700 py-0.5 px-4 rounded-md border border-cyan-300 block text-white">Edit</a>
                         </td>
                     </tr>
                     <?php endforeach; ?>

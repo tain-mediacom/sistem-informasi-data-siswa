@@ -15,9 +15,6 @@
     --color-cyan-300: oklch(86.5% 0.127 207.078);
     --color-cyan-600: oklch(60.9% 0.126 221.723);
     --color-cyan-800: oklch(45% 0.085 224.283);
-    --color-sky-500: oklch(68.5% 0.169 237.323);
-    --color-sky-600: oklch(58.8% 0.158 241.966);
-    --color-sky-700: oklch(50% 0.134 242.749);
     --color-blue-400: oklch(70.7% 0.165 254.624);
     --color-blue-500: oklch(62.3% 0.214 259.815);
     --color-blue-600: oklch(54.6% 0.245 262.881);
@@ -30,12 +27,8 @@
     --color-slate-700: oklch(37.2% 0.044 257.287);
     --color-white: #fff;
     --spacing: 0.25rem;
-    --text-xs: 0.75rem;
-    --text-xs--line-height: calc(1 / 0.75);
     --text-sm: 0.875rem;
     --text-sm--line-height: calc(1.25 / 0.875);
-    --text-lg: 1.125rem;
-    --text-lg--line-height: calc(1.75 / 1.125);
     --text-xl: 1.25rem;
     --text-xl--line-height: calc(1.75 / 1.25);
     --font-weight-semibold: 600;
@@ -333,9 +326,6 @@
   .py-3 {
     padding-block: calc(var(--spacing) * 3);
   }
-  .py-4 {
-    padding-block: calc(var(--spacing) * 4);
-  }
   .text-center {
     text-align: center;
   }
@@ -379,12 +369,6 @@
   @media (hover: hover) {
     .hover\:bg-blue-400:hover {
       background-color: var(--color-blue-400);
-    }
-    .hover\:bg-blue-600:hover {
-      background-color: var(--color-blue-600);
-    }
-    .hover\:bg-blue-700:hover {
-      background-color: var(--color-blue-700);
     }
     .hover\:bg-blue-800:hover {
       background-color: var(--color-blue-800);
