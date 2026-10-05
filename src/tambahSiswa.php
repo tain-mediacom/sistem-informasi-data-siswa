@@ -1,7 +1,22 @@
 <?php
 
     require_once "functions/functionSiswa.php";
+    require_once "functions/functionJurusan.php";
     $title = "Tambah Siswa";
+
+    $jurusan = semuaJurusan($db);
+
+    if (isset($_POST["tambah"])) {
+        $siswa = tambahSiswa($db, $_POST, $_FILES);
+        if ($siswa > 0) {
+            echo "
+            <script>
+            alert('Siswa Baru Ditambahkan !');
+            window.location.href = 'siswa.php';
+            </script>";
+            exit();
+        }
+    }
 
 ?>
 
@@ -32,7 +47,12 @@
                         </select>
                         <input class="block mb-2 px-3 w-full py-2 border border-slate-700" type="text" name="agama" placeholder="Agama">
                         <textarea name="alamat" class="block mb-2 px-3 w-full py-2 border border-slate-700" placeholder="Alamat Siswa"></textarea>
-
+                         <select name="jurusan" class="block mb-2 px-3 w-full py-2 border border-slate-700" required>
+                            <option value="" class="text-sm text-slate-400">--- Jurusan ---</option>
+                            <?php foreach($jurusan as $data) : ?>
+                            <option value="<?= $data["id"]; ?>"><?= $data["jurusan"]; ?></option>
+                            <?php endforeach; ?>
+                        </select>
                         <input class="block mb-2 w-full border border-slate-700 file:text-white file:bg-blue-500 file:px-4 file:py-2 file:mr-4 file:hover:bg-blue-700 file:cursor-pointer" type="file" name="foto">
                     </div>
 
@@ -55,7 +75,7 @@
                         
                     </div>
                 </div>
-                <button class="w-full py-2 bg-sky-600 hover:bg-sky-700 cursor-pointer hover:font-semibold text-white border border-sky-300">Simpan</button>
+                <button type="submit" class="w-full py-2 bg-sky-600 hover:bg-sky-700 cursor-pointer hover:font-semibold text-white border border-sky-300" name="tambah">Simpan</button>
             </form>
         </div>
         <!-- main content end -->

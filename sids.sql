@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 05, 2026 at 02:55 AM
+-- Generation Time: Oct 05, 2026 at 12:48 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -41,7 +41,7 @@ CREATE TABLE `tabel_jurusan` (
 INSERT INTO `tabel_jurusan` (`id`, `jurusan`, `created_at`, `updated_at`) VALUES
 (1, 'Rekayasa Perangkat Lunak', '2026-10-03 16:32:22', '2026-10-03 16:32:22'),
 (2, 'Teknik Komputer Jaringan', '2026-10-03 16:32:22', '2026-10-03 16:32:22'),
-(7, 'Teknik Kendaraan Ringan', '2026-10-03 18:32:25', '2026-10-03 18:32:25');
+(8, 'Desain Komunikasi Visual', '2026-10-05 10:22:05', '2026-10-05 10:22:05');
 
 -- --------------------------------------------------------
 
@@ -64,7 +64,7 @@ CREATE TABLE `tabel_siswa` (
   `alamat_ortu` text NOT NULL,
   `hp_ortu` varchar(20) NOT NULL,
   `jurusan_id` int(11) NOT NULL,
-  `status_id` int(11) NOT NULL,
+  `status_id` int(11) NOT NULL DEFAULT 2,
   `foto` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
@@ -128,13 +128,13 @@ ALTER TABLE `tabel_status`
 -- AUTO_INCREMENT for table `tabel_jurusan`
 --
 ALTER TABLE `tabel_jurusan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tabel_siswa`
 --
 ALTER TABLE `tabel_siswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tabel_status`
