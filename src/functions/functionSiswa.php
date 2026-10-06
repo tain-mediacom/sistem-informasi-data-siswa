@@ -4,8 +4,14 @@
     require "lib/db.php";
 
     function semuaSiswa($db) {
-        $stmt = $db->query("SELECT * FROM tabel_siswa");
+        $stmt = $db->query("SELECT siswa.*, jurusan.jurusan FROM tabel_siswa AS siswa JOIN tabel_jurusan AS jurusan on siswa.jurusan_id = jurusan.id");
         return $stmt->fetchAll();
+    }
+
+    function siswaById($db, $id) {
+        $stmt = $db->prepare("SELECT siswa.*, jurusan.jurusan FROM tabel_siswa AS siswa JOIN tabel_jurusan AS jurusan on siswa.jurusan_id = jurusan.id WHERE siswa.id = ?");
+        $stmt->execute([$id]);            
+        return $stmt->fetch();
     }
 
     function tambahSiswa($db, $data) {
@@ -34,51 +40,43 @@
 
     function uploadFoto() {
         if (!isset($_FILES["foto"])) {
-        die("File foto tidak ditemukan di \$_FILES");
-    }
+            die("File foto tidak ditemukan di \$_FILES");
+        }
 
-    $name = $_FILES["foto"]["name"];
-    $size = $_FILES["foto"]["size"];
-    $temp_name = $_FILES["foto"]["tmp_name"];
-    $error = $_FILES["foto"]["error"];
+        $name = $_FILES["foto"]["name"];
+        $size = $_FILES["foto"]["size"];
+        $temp_name = $_FILES["foto"]["tmp_name"];
+        $error = $_FILES["foto"]["error"];
 
-    // Cek error upload
-    if ($error !== UPLOAD_ERR_OK) {
-        die("Upload gagal. Error code: " . $error);
-    }
+        if ($error !== UPLOAD_ERR_OK) {
+            die("Upload gagal. Error code: " . $error);
+        }
 
-    // Ekstensi file
-    $extension = strtolower(pathinfo($name, PATHINFO_EXTENSION));
+        $extension = strtolower(pathinfo($name, PATHINFO_EXTENSION));
 
-    // Ekstensi yang diperbolehkan
-    $allowed = ["jpg", "jpeg", "png"];
+        $allowed = ["jpg", "jpeg", "png"];
 
-    if (!in_array($extension, $allowed)) {
-        die("Format foto tidak diperbolehkan");
-    }
+        if (!in_array($extension, $allowed)) {
+            die("Format foto tidak diperbolehkan");
+        }
 
-    // Maksimal 2 MB
-    if ($size > 2 * 1024 * 1024) {
-        die("Ukuran foto terlalu besar. Maksimal 2 MB");
-    }
+        if ($size > 2 * 1024 * 1024) {
+            die("Ukuran foto terlalu besar. Maksimal 2 MB");
+        }
 
-    // Nama file baru
-    $newName = uniqid() . "." . $extension;
+        $newName = uniqid() . "." . $extension;
 
-    // Path absolut berdasarkan lokasi file PHP ini
-    $folder = __DIR__ . "/img/siswa/";
+        $folder = __DIR__ . "/../img/siswa/";
 
-    // Buat folder jika belum ada
-    if (!is_dir($folder)) {
-        mkdir($folder, 0777, true);
-    }
+        if (!is_dir($folder)) {
+            mkdir($folder, 0777, true);
+        }
 
-    // Pindahkan file
-    if (!move_uploaded_file($temp_name, $folder . $newName)) {
-        die("Foto gagal dipindahkan ke folder: " . $folder);
-    }
+        if (!move_uploaded_file($temp_name, $folder . $newName)) {
+            die("Foto gagal dipindahkan ke folder: " . $folder);
+        }
 
-    return $newName;
+        return $newName;
     }
 
     function hapusSiswa($db, $id) {

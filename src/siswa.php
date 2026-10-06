@@ -47,15 +47,15 @@
                     <?php $x=1; foreach($dataSiswa as $siswa) : ?>
                     <tr>
                         <td class="border border-cyan-200 text-slate-700 py-1 px-3"><?php echo $x++; ?></td>
-                        <td class="border border-cyan-200 text-slate-700 py-1 px-6"><?php echo htmlspecialchars($siswa["nama"]); ?></td>
+                        <td class="border border-cyan-200 text-slate-700 py-1 px-6"><a href="detailSiswa.php?id=<?php echo ($siswa["id"]); ?>"><?php echo htmlspecialchars($siswa["nama"]); ?></a></td>
                         <td class="border border-cyan-200 text-slate-700 py-1 px-6"><?php echo htmlspecialchars($siswa["nisn"]); ?></td>
-                        <td class="border border-cyan-200 text-slate-700 py-1 px-6"><?php echo htmlspecialchars($siswa["jurusan_id"]); ?></td>
+                        <td class="border border-cyan-200 text-slate-700 py-1 px-6"><?php echo htmlspecialchars($siswa["jurusan"]); ?></td>
                         <td class="border flex items-center gap-2 border-cyan-200 text-slate-700 py-1 px-6">
                             <form action="" method="post" onclick="return confirm('Yakin hapus data siswa !')">
                                 <input type="hidden" name="id" value="<?php echo $siswa["id"]; ?>">
                                 <button type="submit" name="hapus" class="bg-red text-white py-0.5 px-2 rounded-md border border-red-300 bg-red-700">Hapus</button>
                             </form>
-                            <a href="" class="bg-blue-700 py-0.5 px-4 rounded-md border border-cyan-300 block text-white">Edit</a>
+                            <a href="editSiswa.php?id=<?php echo $siswa["id"]; ?>" class="bg-blue-700 py-0.5 px-4 rounded-md border border-cyan-300 block text-white">Edit</a>
                         </td>
                     </tr>
                     <?php endforeach; ?>

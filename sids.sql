@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 05, 2026 at 12:48 PM
+-- Generation Time: Oct 06, 2026 at 12:29 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -70,6 +70,13 @@ CREATE TABLE `tabel_siswa` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tabel_siswa`
+--
+
+INSERT INTO `tabel_siswa` (`id`, `nama`, `nisn`, `tmpt_lahir`, `tgl_lahir`, `kelamin`, `agama`, `alamat`, `keluar`, `ayah`, `ibu`, `alamat_ortu`, `hp_ortu`, `jurusan_id`, `status_id`, `foto`, `created_at`, `updated_at`) VALUES
+(15, 'Aura Kasih Putri Ramadhan', '1234567890', 'Dumai', '2008-09-09', '', 'Islam', 'Perumahan Padang Hijau km 14,5', NULL, 'Romi', 'Titin Indra Sari ', 'Perumahan Padang Hijau km 14,5', '0895412981125', 1, 2, '6ac4c8b431112.jpeg', '2026-10-06 10:08:52', '2026-10-06 10:08:52');
+
 -- --------------------------------------------------------
 
 --
@@ -134,7 +141,7 @@ ALTER TABLE `tabel_jurusan`
 -- AUTO_INCREMENT for table `tabel_siswa`
 --
 ALTER TABLE `tabel_siswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `tabel_status`
